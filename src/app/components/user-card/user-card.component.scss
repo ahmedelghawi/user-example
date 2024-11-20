@@ -1,0 +1,14 @@
+.mat-mdc-card {
+    width: 400px;
+    .avatar {
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+
+    .mat-mdc-card-actions {
+        justify-content: end;
+        gap: 10px;
+    }
+}
+
