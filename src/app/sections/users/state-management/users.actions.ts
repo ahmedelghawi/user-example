@@ -3,6 +3,7 @@ import { User, UserData } from "../user-interfaces";
 
 export const getData = createAction(
     "[Data Resolver] Get Data",
+    props<{pageNumber: number, perPage: number}>()
 );
 
 export const gotData = createAction(
