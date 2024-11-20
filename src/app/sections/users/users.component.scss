@@ -1,0 +1,13 @@
+.container {
+    margin: 20px;
+    h1 {
+        font-weight: 300;
+    }
+    .users {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
