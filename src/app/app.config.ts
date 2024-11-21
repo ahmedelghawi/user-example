@@ -5,7 +5,10 @@ import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { loadingSpinnerInterceptor } from './interceptors/loading-spinner/loading-spinner.interceptor';
+import { authInterceptor } from './interceptors/auth/auth.interceptor';
+import { snackbarInterceptor } from './interceptors/snackbar/snackbar.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideStore(),
     provideEffects(),
-    provideHttpClient()
+    provideHttpClient(withInterceptors([loadingSpinnerInterceptor, authInterceptor, snackbarInterceptor]))
   ]
 };
