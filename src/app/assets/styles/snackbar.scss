@@ -1,0 +1,11 @@
+.snackbar-success {
+    .mdc-snackbar__surface {
+        border-left: 10px solid green;
+    }
+}
+
+.snackbar-error {
+    .mdc-snackbar__surface {
+        border-left: 10px solid red;
+    }
+}

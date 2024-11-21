@@ -5,4 +5,10 @@
             <app-user-card [user]="user"></app-user-card>
         }
     </div>
+    <mat-paginator [length]="(data$ | async)?.total"
+            (page)="handlePageEvent($event)"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page">
+    </mat-paginator>
 </div>

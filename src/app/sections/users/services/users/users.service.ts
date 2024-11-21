@@ -9,7 +9,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<UserData> {
-    return this.http.get<UserData>('https://reqres.in/api/users?page=1&per_page=20');
+  getData(pageNumber: number, perPage: number): Observable<UserData> {
+    return this.http.get<UserData>(`https://reqres.in/api/users?page=${pageNumber}&per_page=${perPage}`);
   }
 }

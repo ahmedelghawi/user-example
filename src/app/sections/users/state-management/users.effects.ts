@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UsersActions } from "./action-types";
-import { concatMap, map } from "rxjs";
+import { map, switchMap } from "rxjs";
 import { gotData } from "./users.actions";
 import { UsersService } from "../services/users/users.service";
 
@@ -14,7 +14,7 @@ export class UsersEffects {
     getData$ = createEffect(
         () => this.actions$.pipe(
             ofType(UsersActions.getData),
-            concatMap(() => this.usersService.getData()),
+            switchMap(action => this.usersService.getData(action.pageNumber, action.perPage)),
             map(data => {
                 return gotData({ data });
             })

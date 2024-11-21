@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UserCardComponent } from "../../components/user-card/user-card.component";
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { UserCardComponent } from "../../components/user-card/user-card.componen
         NgStyle,
         MatCardModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatPaginatorModule
     ],
     declarations: [
         UsersComponent,
