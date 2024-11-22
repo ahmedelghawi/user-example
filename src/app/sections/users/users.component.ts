@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User, UserData } from './interfaces/user-interfaces';
-import { getData } from './state-management/users.actions';
-import { selectData } from './state-management/users.selectors';
-import { DataState } from './state-management/users.reducers';
+import { UserData } from './@core/interfaces/user-interfaces';
+import { getData } from './@core/state-management/users.actions';
+import { selectData } from './@core/state-management/users.selectors';
+import { DataState } from './@core/state-management/users.reducers';
 import { PageEvent } from '@angular/material/paginator';
-import { PageTitleService } from '../../services/page-title/page-title.service';
+import { PageTitleService } from '../../@core/services/page-title/page-title.service';
 
 @Component({
   selector: 'app-users',

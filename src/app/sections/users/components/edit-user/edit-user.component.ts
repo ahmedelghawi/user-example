@@ -1,14 +1,16 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { getUser, updateUser } from '../state-management/users.actions';
+import { deleteUser, getUser, updateUser } from '../../@core/state-management/users.actions';
 import { ActivatedRoute } from '@angular/router';
 import { map, merge, Observable } from 'rxjs';
-import { User } from '../interfaces/user-interfaces';
-import { selectUser } from '../state-management/users.selectors';
+import { User } from '../../@core/interfaces/user-interfaces';
+import { selectUser } from '../../@core/state-management/users.selectors';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ErrorMessages, IForm } from '../interfaces/form';
+import { ErrorMessages, IForm } from '../../@core/interfaces/form';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PageTitleService } from '../../../services/page-title/page-title.service';
+import { PageTitleService } from '../../../../@core/services/page-title/page-title.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-edit-user',
@@ -16,6 +18,7 @@ import { PageTitleService } from '../../../services/page-title/page-title.servic
   styleUrl: './edit-user.component.scss'
 })
 export class EditUserComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
 
   userId!: number;
   userData$!: Observable<User | undefined>;
@@ -40,6 +43,15 @@ export class EditUserComponent implements OnInit {
     this.userId = Number(this.route.snapshot.paramMap.get('id') || '');
     this.store.dispatch(getUser({id: this.userId}));
     this.userData$ = this.store.pipe(select(selectUser));
+    this.userData$.subscribe(data => {
+      this.editForm.patchValue(data ?
+        {
+          first_name: data.first_name,
+          last_name: data.last_name,
+          email: data.email
+        } : {}
+      );
+    });
   }
 
   initializeForm(): void {
@@ -78,5 +90,21 @@ export class EditUserComponent implements OnInit {
       ));
     }
     
+  }
+
+  openDeleteUserDialog(): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      result ? this.deleteUser() : null;
+    })
+  }
+
+  deleteUser(): void {
+    this.store.dispatch(deleteUser({
+      userId: this.userId
+    }));
   }
 }
