@@ -1,4 +1,10 @@
 <div class="container">
+    <div class="add-user" routerLink="create-user">
+        <button mat-fab extended>
+            <mat-icon>add</mat-icon>
+            Create new user
+        </button>
+    </div>
     <div class="users">
         @for (user of (data$ | async)?.data; track user.id) {
             <app-user-card [user]="user"></app-user-card>

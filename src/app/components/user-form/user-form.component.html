@@ -1,0 +1,23 @@
+
+
+    <form [formGroup]="form" class="form" (ngSubmit)="submit()">
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" />
+            <mat-error>{{ errorMessages['first_name']() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" />
+            <mat-error>{{ errorMessages['last_name']() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error>{{ errorMessages['email']() }}</mat-error>
+        </mat-form-field>
+        
+        <div class="actions">
+            <button mat-flat-button type="submit">Save</button>
+        </div>
+    </form>

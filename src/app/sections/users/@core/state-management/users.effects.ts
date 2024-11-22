@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UsersActions } from "./action-types";
 import { map, switchMap, withLatestFrom } from "rxjs";
-import { deletedUser, gotData, gotUser, updatedUser } from "./users.actions";
+import { addedUser, deletedUser, gotData, gotUser, updatedUser } from "./users.actions";
 import { select, Store } from "@ngrx/store";
 import { selectData } from "./users.selectors";
 import { UsersService } from "../services/users/users.service";
@@ -48,9 +48,9 @@ export class UsersEffects {
                             const updatedData = storeData.data.map(user => 
                                 user.id === this.userId ? {
                                     ...user,
-                                    first_name: user.first_name,
-                                    last_name: user.last_name,
-                                    email: user.email
+                                    first_name: data.first_name,
+                                    last_name: data.last_name,
+                                    email: data.email
                                 }
                                 : user
                             );
@@ -82,6 +82,26 @@ export class UsersEffects {
                         }
 
                         return deletedUser({data: storeData})
+                    })
+                );
+            })
+        )
+    );
+
+    addUser$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(UsersActions.addUser),
+            switchMap(action => {
+                return this.usersService.createUser(action.details).pipe(
+                    withLatestFrom(this.store.pipe(select(selectData))),
+                    map(([data, storeData]) => {
+                        if (storeData) {
+                            const updatedData = [...storeData.data]
+                            updatedData.push(data);
+                            storeData = { ...storeData, data: updatedData};
+                            this.router.navigateByUrl('/users');
+                        }
+                        return addedUser({data: storeData})
                     })
                 );
             })

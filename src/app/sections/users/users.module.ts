@@ -22,6 +22,8 @@ import {
     MatDialogContent,
     MatDialogTitle,
   } from '@angular/material/dialog';
+import { UserFormComponent } from "../../components/user-form/user-form.component";
+import { CreateUserComponent } from "./components/create-user/create-user.component";
 
 @NgModule({
     imports: [
@@ -46,7 +48,9 @@ import {
         UsersComponent,
         UserCardComponent,
         EditUserComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        UserFormComponent,
+        CreateUserComponent
     ],
     providers: [
         provideState({name: 'dataState', reducer: dataReducer}),
