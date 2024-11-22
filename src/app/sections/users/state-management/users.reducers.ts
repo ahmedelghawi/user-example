@@ -1,18 +1,28 @@
 import { createReducer, on } from "@ngrx/store";
-import { UserData } from "../user-interfaces";
+import { User, UserData } from "../interfaces/user-interfaces";
 import { UsersActions } from "./action-types";
 
 export interface DataState {
     data: UserData | undefined;
+    user: User | undefined;
 };
 
-export const initialUsersState: DataState = {
-    data: undefined
+export const initialDataState: DataState = {
+    data: undefined,
+    user: undefined
 };
 
 export const dataReducer = createReducer(
-    initialUsersState,
+    initialDataState,
     on(UsersActions.gotData, (state, action) => ({
+        ...state,
+        data: action.data
+    })),
+    on(UsersActions.gotUser, (state, action) => ({
+        ...state,
+        user: action.user
+    })),
+    on(UsersActions.updatedUser, (state, action) => ({
         ...state,
         data: action.data
     }))

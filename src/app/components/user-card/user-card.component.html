@@ -5,10 +5,10 @@
         <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-        <button mat-mini-fab>
+        <button mat-mini-fab [routerLink]="['edit-user', user.id]">
             <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab >
+        <button mat-mini-fab>
             <mat-icon>delete</mat-icon>
         </button>
     </mat-card-actions>

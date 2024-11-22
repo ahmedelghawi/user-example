@@ -6,7 +6,7 @@ import { catchError, finalize, tap, throwError } from 'rxjs';
 export const snackbarInterceptor: HttpInterceptorFn = (req, next) => {
   const snackbar = inject(MatSnackBar);
   const snackbarSettings = {
-    duration: 311000,
+    duration: 3000,
     horizontalPosition: 'right',
     verticalPosition: 'top'
   } as MatSnackBarConfig;

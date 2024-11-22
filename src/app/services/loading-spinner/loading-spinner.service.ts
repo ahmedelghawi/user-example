@@ -12,7 +12,6 @@ export class LoadingSpinnerService {
   }
 
   setLoader(flag: boolean): void {
-    console.log(flag);
     this._isLoading.set(flag);
   }
 }

@@ -1,0 +1,17 @@
+$space: 20px;
+$minWidth: 250px;
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: $space;
+    padding: $space;
+    width: 25%;
+    .mat-mdc-form-field {
+        min-width: $minWidth;
+    }
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        padding-top: $space;
+    }
+}
