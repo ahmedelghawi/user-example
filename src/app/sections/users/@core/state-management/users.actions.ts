@@ -22,11 +22,21 @@ export const gotUser = createAction(
 );
 
 export const updateUser = createAction(
-    "[Update User Effect] Update user",
+    "[Update User Resolver] Update user",
     props<{userId: number, details: any}>()
 )
 
 export const updatedUser = createAction(
     "[Updated User Effect] Updated user",
+    props<{data: UserData | undefined}>()
+)
+
+export const deleteUser = createAction(
+    "[Delete User Resolver] Delete user",
+    props<{userId: number}>()
+)
+
+export const deletedUser = createAction(
+    "[Deleted User Effect] Deleted user",
     props<{data: UserData | undefined}>()
 )

@@ -16,9 +16,9 @@ export interface User {
 }
 
 export interface UpdatedUser {
-    email?: string;
-    first_name?: string;
-    last_name?: string;
+    email: string;
+    first_name: string;
+    last_name: string;
     updatedAt: string;
 }
 

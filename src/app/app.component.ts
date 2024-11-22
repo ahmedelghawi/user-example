@@ -1,9 +1,7 @@
-import { Component, effect, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { LoadingSpinnerComponent } from "./components/loading-spinner/loading-spinner.component";
-import { Store } from '@ngrx/store';
-import { filter } from 'rxjs';
-import { PageTitleService } from './services/page-title/page-title.service';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { PageTitleService } from './@core/services/page-title/page-title.service';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-root',

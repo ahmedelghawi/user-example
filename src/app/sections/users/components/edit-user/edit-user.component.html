@@ -2,6 +2,10 @@
     
     <div class="avatar-container">
         <img [ngSrc]="(userData$ | async)?.avatar ?? '/images/person-icon.jpg'" class="avatar" width="128" height="128" priority="highest"/>
+        <button mat-fab extended class="warn" (click)="openDeleteUserDialog()">
+            <mat-icon>delete</mat-icon>
+            Delete user
+        </button>
     </div>
 
     <form [formGroup]="editForm" (ngSubmit)="saveUser()" class="form">

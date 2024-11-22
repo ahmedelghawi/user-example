@@ -8,7 +8,7 @@
         <button mat-mini-fab [routerLink]="['edit-user', user.id]">
             <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab>
+        <button mat-mini-fab (click)="openDeleteUserDialog()">
             <mat-icon>delete</mat-icon>
         </button>
     </mat-card-actions>
