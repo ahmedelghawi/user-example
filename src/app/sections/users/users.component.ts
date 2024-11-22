@@ -26,6 +26,7 @@ export class UsersComponent implements OnInit {
     this.getData();
   }
 
+  // Method to get data through state managment and the user service from the reqres.in API
   getData(): void {
     select(selectData);
     this.data$ = this.store.pipe(select(selectData));

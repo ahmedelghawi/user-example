@@ -9,11 +9,14 @@ import { PageTitleService } from '../../@core/services/page-title/page-title.ser
 import { ErrorMessages, IForm } from '../../sections/users/@core/interfaces/form';
 import { User } from '../../sections/users/@core/interfaces/user-interfaces';
 
+// Reusable form component for Editing and Creating users 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss'
 })
+
 export class UserFormComponent implements OnInit, OnChanges {
   readonly dialog = inject(MatDialog);
 

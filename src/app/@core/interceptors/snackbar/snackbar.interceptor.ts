@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { catchError, finalize, tap, throwError } from 'rxjs';
 
+// displays a snackbar depending on whether the API succeeds or fails
 export const snackbarInterceptor: HttpInterceptorFn = (req, next) => {
   const snackbar = inject(MatSnackBar);
   const snackbarSettings = {
