@@ -1,0 +1,29 @@
+<div class="edit-form-container">
+    
+    <div class="avatar-container">
+        <img [ngSrc]="(userData$ | async)?.avatar ?? '/images/person-icon.jpg'" class="avatar" width="128" height="128" priority="highest"/>
+    </div>
+
+    <form [formGroup]="editForm" (ngSubmit)="saveUser()" class="form">
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" />
+            <mat-error>{{ errorMessages['first_name']() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" />
+            <mat-error>{{ errorMessages['last_name']() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error>{{ errorMessages['email']() }}</mat-error>
+        </mat-form-field>
+        
+        <div class="actions">
+            <button mat-flat-button type="submit">Save</button>
+        </div>
+    </form>
+
+</div>

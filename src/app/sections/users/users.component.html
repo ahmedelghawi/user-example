@@ -1,5 +1,4 @@
 <div class="container">
-    <h1>Users</h1>
     <div class="users">
         @for (user of (data$ | async)?.data; track user.id) {
             <app-user-card [user]="user"></app-user-card>

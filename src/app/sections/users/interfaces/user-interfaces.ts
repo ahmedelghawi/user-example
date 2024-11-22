@@ -15,3 +15,10 @@ export interface User {
     avatar: string;
 }
 
+export interface UpdatedUser {
+    email?: string;
+    first_name?: string;
+    last_name?: string;
+    updatedAt: string;
+}
+

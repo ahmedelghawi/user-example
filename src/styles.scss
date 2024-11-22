@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import './app/assets/styles/button.scss';
-@import './app/assets/styles/snackbar.scss';
+@import './app/styles/button.scss';
+@import './app/styles/snackbar.scss';
+@import './app/styles/form.scss';
+@import './app/styles/avatar.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

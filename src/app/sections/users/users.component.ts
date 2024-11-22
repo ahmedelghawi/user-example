@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { User, UserData } from './user-interfaces';
+import { User, UserData } from './interfaces/user-interfaces';
 import { getData } from './state-management/users.actions';
 import { selectData } from './state-management/users.selectors';
 import { DataState } from './state-management/users.reducers';
 import { PageEvent } from '@angular/material/paginator';
+import { PageTitleService } from '../../services/page-title/page-title.service';
 
 @Component({
   selector: 'app-users',
@@ -18,8 +19,9 @@ export class UsersComponent implements OnInit {
   pageNumber = 1;
   perPage = 10;
 
-  constructor(private store: Store<DataState>) {
 
+  constructor(private store: Store<DataState>, private pageTitleService: PageTitleService) {
+    this.pageTitleService.pageTitle.set('Users');
   }
   
   ngOnInit(): void {
