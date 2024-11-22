@@ -21,6 +21,16 @@ export const gotUser = createAction(
     props<{user: User | undefined}>()
 );
 
+export const addUser = createAction(
+    "[Add User Resolver] Update user",
+    props<{details: any}>()
+)
+
+export const addedUser = createAction(
+    "[Added User Effect] Updated user",
+    props<{data: UserData | undefined}>()
+)
+
 export const updateUser = createAction(
     "[Update User Resolver] Update user",
     props<{userId: number, details: any}>()

@@ -1,5 +1,10 @@
 .container {
-    margin: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .add-user {
+        align-self: flex-end;
+    }
     .users {
         display: flex;
         flex-wrap: wrap;

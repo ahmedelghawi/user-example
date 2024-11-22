@@ -16,8 +16,6 @@ import { PageTitleService } from '../../@core/services/page-title/page-title.ser
 export class UsersComponent implements OnInit {
 
   data$!: Observable<UserData | undefined>;
-  pageNumber = 1;
-  perPage = 10;
 
 
   constructor(private store: Store<DataState>, private pageTitleService: PageTitleService) {
@@ -25,21 +23,26 @@ export class UsersComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    select(selectData);
     this.getData();
   }
 
   getData(): void {
-    this.store.dispatch(getData({
-      pageNumber: this.pageNumber,
-      perPage: this.perPage
-    }));
+    select(selectData);
     this.data$ = this.store.pipe(select(selectData));
+    this.data$.subscribe(data => {
+      if (!data) {
+        this.store.dispatch(getData({
+          pageNumber: 1,
+          perPage: 10
+        }));
+      }
+    })
   }
 
   handlePageEvent(event: PageEvent): void {
-    this.pageNumber = event.pageIndex + 1;
-    this.perPage = event.pageSize;
-    this.getData();
+    this.store.dispatch(getData({
+      pageNumber: event.pageIndex + 1,
+      perPage: event.pageSize
+    }));
   }
 }

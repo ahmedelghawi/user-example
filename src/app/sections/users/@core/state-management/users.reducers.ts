@@ -26,6 +26,10 @@ export const dataReducer = createReducer(
         ...state,
         data: action.data
     })),
+    on(UsersActions.addedUser, (state, action) => ({
+        ...state,
+        data: action.data
+    })),
     on(UsersActions.deletedUser, (state, action) => ({
         ...state,
         data: action.data

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { UpdatedUser, User, UserData } from '../../interfaces/user-interfaces';
+import { NewUser, UpdatedUser, User, UserData } from '../../interfaces/user-interfaces';
 import { Route, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class UsersService {
       .set('page', pageNumber.toString())
       .set('per_page', perPage.toString());
 
-    return this.http.get<UserData>(this.baseUrl, { params });
+    return this.http.get<UserData>(`${this.baseUrl}`, { params });
   }
 
   getUser(id: number): Observable<User> {
@@ -30,8 +30,12 @@ export class UsersService {
     );
   }
 
-  editUser(userId: number, details: any): Observable<UpdatedUser> {
+  editUser(userId: number, details: User): Observable<UpdatedUser> {
     return this.http.patch<UpdatedUser>(`${this.baseUrl}/${userId}`, details);
+  }
+
+  createUser(details: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/create`, details);
   }
 
   deleteUser(userId: number): Observable<any> {

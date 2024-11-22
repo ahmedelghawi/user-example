@@ -1,8 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { User } from '../../@core/interfaces/user-interfaces';
-import { UsersService } from '../../@core/services/users/users.service';
 import { Store } from '@ngrx/store';
-import { deleteUser, updateUser } from '../../@core/state-management/users.actions';
+import { deleteUser } from '../../@core/state-management/users.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
@@ -20,7 +19,7 @@ export class UserCardComponent {
 
   avatarStyle(): object {
     return {
-      'background-image': `url(${this.user.avatar})`
+      'background-image': `url(${this.user.avatar ? this.user.avatar : '/images/person-icon.jpg'})`
     };
   }
 

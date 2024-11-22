@@ -22,3 +22,8 @@ export interface UpdatedUser {
     updatedAt: string;
 }
 
+export interface NewUser {
+    id: number;
+    token: string;
+}
+
