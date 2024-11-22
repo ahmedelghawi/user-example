@@ -19,6 +19,7 @@ export class CreateUserComponent {
     this.pageTitleService.pageTitle.set('Users > Create new user');
   }
 
+  // function to create a new user
   createUser(details: User): void {
     this.store.dispatch(addUser({details}));
   }

@@ -25,6 +25,7 @@ export class EditUserComponent implements OnInit {
     this.pageTitleService.pageTitle.set('Users > Edit user');
   }
 
+  // initializing functionality which gets the singular user data to be edited
   ngOnInit(): void {
     this.userId = Number(this.route.snapshot.paramMap.get('id') || '');
     this.store.dispatch(getUser({id: this.userId}));
@@ -33,7 +34,7 @@ export class EditUserComponent implements OnInit {
       this.userData = data || {} as User;
     });
   }
-
+  // Saves a user
   saveUser(details: User): void {
     this.store.dispatch(updateUser({userId: this.userId, details}));
   }

@@ -17,12 +17,14 @@ export class UserCardComponent {
 
   constructor(private store: Store) {}
 
+  // styling for the avatar image
   avatarStyle(): object {
     return {
       'background-image': `url(${this.user.avatar ? this.user.avatar : '/images/person-icon.jpg'})`
     };
   }
 
+  // Opens a dialog confirmation for deleting a user
   openDeleteUserDialog(): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px'
@@ -33,6 +35,7 @@ export class UserCardComponent {
     })
   }
 
+  // Funcitionality to delete user
   deleteUser(): void {
     this.store.dispatch(deleteUser({
       userId: this.user.id
